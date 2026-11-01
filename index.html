@@ -70,7 +70,8 @@ p{margin:0 0 16px}
 .person h3 a{color:var(--ink);text-decoration:none}
 .person h3 a:hover{color:var(--teal);text-decoration:underline}
 .aff{color:var(--muted);margin:0;font-size:1rem;line-height:1.4}
-.speakers{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.role{color:var(--teal);margin:4px 0 0;font-size:.95rem;line-height:1.35;font-weight:600}
+.speakers{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .speaker{border-top:3px solid var(--teal);padding-top:18px}
 #speakers .ph{width:104px;height:104px}
 .speaker .focus{font-style:italic;color:var(--navy);margin:8px 0 0;font-size:1.05rem}
@@ -177,11 +178,18 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
       <p class="aff">Princeton University</p>
       <p class="focus">Sensor failures and adaptive multimodal fusion</p></div>
     </div>
+    <div class="speaker person">
+      <figure class="ph"><img src="img/XH.jpg" alt="Xing Han" onerror="this.remove()"><span aria-hidden="true">XH</span></figure>
+      <div><h3><a href="https://aaronhan223.github.io/">Xing Han</a></h3>
+      <p class="aff">Johns Hopkins University</p>
+      <p class="focus">Fusion with missing and irregular clinical modalities</p></div>
+    </div>
   </div>
 
   <h3 style="margin:44px 0 18px;font-size:1.4rem;color:var(--navy)">Panel</h3>
   <div class="people">
     <div class="person"><figure class="ph"><img src="img/RK.jpg" alt="Ranjay Krishna" onerror="this.remove()"><span aria-hidden="true">RK</span></figure><div><h3><a href="https://ranjaykrishna.com/">Ranjay Krishna</a></h3><p class="aff">University of Washington</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/XH.jpg" alt="Xing Han" onerror="this.remove()"><span aria-hidden="true">XH</span></figure><div><h3><a href="https://aaronhan223.github.io/">Xing Han</a></h3><p class="aff">Johns Hopkins University</p></div></div>
     <div class="person"><figure class="ph"><img src="img/PB.jpg" alt="Pierre Baldi" onerror="this.remove()"><span aria-hidden="true">PB</span></figure><div><h3><a href="https://www.ics.uci.edu/~pfbaldi/">Pierre Baldi</a></h3><p class="aff">University of California, Irvine</p></div></div>
     <div class="person seat"><figure class="ph"><span aria-hidden="true">+2</span></figure><div><h3>Two author seats</h3><p class="aff">Selected from accepted papers, with priority to students and early-career researchers.</p></div></div>
   </div>
@@ -196,9 +204,10 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
     <thead><tr><th scope="col">Time</th><th scope="col">Session</th><th scope="col" style="text-align:right">Min</th></tr></thead>
     <tbody>
       <tr><td class="t">00:00–00:10</td><td>Welcome and the three scientific pillars</td><td class="m">10</td></tr>
-      <tr><td class="t">00:10–00:55</td><td>Keynote: Paul Pu Liang</td><td class="m">45</td></tr>
-      <tr><td class="t">00:55–01:40</td><td>Keynote: Felix Heide</td><td class="m">45</td></tr>
-      <tr><td class="t">01:40–01:55</td><td>Coffee break</td><td class="m">15</td></tr>
+      <tr><td class="t">00:10–00:40</td><td>Invited talk: Paul Pu Liang</td><td class="m">30</td></tr>
+      <tr><td class="t">00:40–01:10</td><td>Invited talk: Felix Heide</td><td class="m">30</td></tr>
+      <tr><td class="t">01:10–01:25</td><td>Coffee break</td><td class="m">15</td></tr>
+      <tr><td class="t">01:25–01:55</td><td>Invited talk: Xing Han</td><td class="m">30</td></tr>
       <tr><td class="t">01:55–02:25</td><td>Three contributed spotlights</td><td class="m">30</td></tr>
       <tr class="hl"><td class="t">02:25–03:20</td><td>Panel: The most instructive failure I have seen</td><td class="m">55</td></tr>
       <tr><td class="t">03:20–04:20</td><td>Posters and cross-domain networking</td><td class="m">60</td></tr>
@@ -240,13 +249,13 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
 <section id="organizers"><div class="wrap">
   <h2>Organizers</h2>
   <div class="people">
-    <div class="person"><figure class="ph"><img src="img/PS.jpg" alt="Paolo Soda" onerror="this.remove()"><span aria-hidden="true">PS</span></figure><div><h3><a href="https://www.umu.se/en/staff/paolo-soda/">Paolo Soda</a></h3><p class="aff">Università Campus Bio-Medico di Roma; Umeå University</p></div></div>
-    <div class="person"><figure class="ph"><img src="img/AF.jpg" alt="Arianna Francesconi" onerror="this.remove()"><span aria-hidden="true">AF</span></figure><div><h3><a href="https://scholar.google.com/citations?user=9k4AlTMAAAAJ">Arianna Francesconi</a></h3><p class="aff">Università Campus Bio-Medico di Roma</p></div></div>
-    <div class="person"><figure class="ph"><img src="img/RS.jpg" alt="Rosa Sicilia" onerror="this.remove()"><span aria-hidden="true">RS</span></figure><div><h3><a href="https://unicamillus.org/en/lecturers/rosa-sicilia/">Rosa Sicilia</a></h3><p class="aff">UniCamillus, Rome</p></div></div>
-    <div class="person"><figure class="ph"><img src="img/PB.jpg" alt="Pierre Baldi" onerror="this.remove()"><span aria-hidden="true">PB</span></figure><div><h3><a href="https://www.ics.uci.edu/~pfbaldi/">Pierre Baldi</a></h3><p class="aff">University of California, Irvine</p></div></div>
-    <div class="person"><figure class="ph"><img src="img/VG.jpg" alt="Valerio Guarrasi" onerror="this.remove()"><span aria-hidden="true">VG</span></figure><div><h3><a href="https://guarrasi1995.github.io/">Valerio Guarrasi</a></h3><p class="aff">UniCamillus, Rome</p></div></div>
-    <div class="person"><figure class="ph"><img src="img/SB.jpg" alt="Sara Beery" onerror="this.remove()"><span aria-hidden="true">SB</span></figure><div><h3><a href="https://beerys.github.io/">Sara Beery</a></h3><p class="aff">Massachusetts Institute of Technology</p></div></div>
-    <div class="person"><figure class="ph"><img src="img/RK.jpg" alt="Ranjay Krishna" onerror="this.remove()"><span aria-hidden="true">RK</span></figure><div><h3><a href="https://ranjaykrishna.com/">Ranjay Krishna</a></h3><p class="aff">University of Washington</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/PS.jpg" alt="Paolo Soda" onerror="this.remove()"><span aria-hidden="true">PS</span></figure><div><h3><a href="https://www.umu.se/en/staff/paolo-soda/">Paolo Soda</a></h3><p class="aff">Università Campus Bio-Medico di Roma; Umeå University</p><p class="role">General chair</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/AF.jpg" alt="Arianna Francesconi" onerror="this.remove()"><span aria-hidden="true">AF</span></figure><div><h3><a href="https://scholar.google.com/citations?user=9k4AlTMAAAAJ">Arianna Francesconi</a></h3><p class="aff">Università Campus Bio-Medico di Roma</p><p class="role">Program co-chair · Primary liaison</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/RS.jpg" alt="Rosa Sicilia" onerror="this.remove()"><span aria-hidden="true">RS</span></figure><div><h3><a href="https://unicamillus.org/en/lecturers/rosa-sicilia/">Rosa Sicilia</a></h3><p class="aff">UniCamillus, Rome</p><p class="role">Program co-chair · Secondary liaison</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/PB.jpg" alt="Pierre Baldi" onerror="this.remove()"><span aria-hidden="true">PB</span></figure><div><h3><a href="https://www.ics.uci.edu/~pfbaldi/">Pierre Baldi</a></h3><p class="aff">University of California, Irvine</p><p class="role">Senior advisor</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/VG.jpg" alt="Valerio Guarrasi" onerror="this.remove()"><span aria-hidden="true">VG</span></figure><div><h3><a href="https://guarrasi1995.github.io/">Valerio Guarrasi</a></h3><p class="aff">UniCamillus, Rome</p><p class="role">Publication chair</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/SB.jpg" alt="Sara Beery" onerror="this.remove()"><span aria-hidden="true">SB</span></figure><div><h3><a href="https://beerys.github.io/">Sara Beery</a></h3><p class="aff">Massachusetts Institute of Technology</p><p class="role">Outreach and diversity</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/RK.jpg" alt="Ranjay Krishna" onerror="this.remove()"><span aria-hidden="true">RK</span></figure><div><h3><a href="https://ranjaykrishna.com/">Ranjay Krishna</a></h3><p class="aff">University of Washington</p><p class="role">Local liaison, Seattle</p></div></div>
   </div>
 </div></section>
 </main>
