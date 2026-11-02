@@ -313,11 +313,11 @@ function buildHero(svg){
   const W=V?400:1040,H=V?720:400; svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
   const cap=document.getElementById('heroCap');
   const S=[
-    {label:'Vision',sub:'cameras, video',ic:'camera',ch:'Noisy',chs:'fog, glare, blur'},
-    {label:'Robotics',sub:'LiDAR, radar, touch',ic:'robot',ch:'Misaligned',chs:'sensors out of sync'},
-    {label:'Earth observation',sub:'optical, SAR',ic:'sat',ch:'Missing',chs:'cloud cover'},
-    {label:'Ecology',sub:'camera traps, audio',ic:'leaf',ch:'Unpaired',chs:'no matched samples'},
-    {label:'Healthcare',sub:'imaging, records',ic:'pulse',ch:'Shifted',chs:'a new hospital'}
+    {label:'Vision',sub:'cameras, video',ic:'camera',ch:'Noisy',chs:'fog, glare, blur',resp:'The resilient model trusts the camera less and leans on the other sensors.'},
+    {label:'Robotics',sub:'LiDAR, radar, touch',ic:'robot',ch:'Misaligned',chs:'sensors out of sync',resp:'The resilient model re-aligns the streams in time before fusing them.'},
+    {label:'Earth observation',sub:'optical, SAR',ic:'sat',ch:'Missing',chs:'cloud cover',resp:'The resilient model falls back on radar instead of guessing what the clouds hide.'},
+    {label:'Ecology',sub:'camera traps, audio',ic:'leaf',ch:'Unpaired',chs:'no matched samples',resp:'The resilient model links the modalities only where shared evidence supports it.'},
+    {label:'Healthcare',sub:'imaging, records',ic:'pulse',ch:'Shifted',chs:'a new hospital',resp:'The resilient model checks its calibration and defers to clinicians when uncertain.'}
   ];
   const hub=V?{x:300,y:175,r:46}:{x:600,y:190,r:62};
   const root=el('g',{},svg);
@@ -371,7 +371,7 @@ function buildHero(svg){
     if(s.ch==='Missing'){s.path.setAttribute('stroke',C.rust);s.path.setAttribute('stroke-dasharray','4 8');s.path.setAttribute('stroke-opacity',.8);s.ic_g.setAttribute('stroke',C.muted);}
     else s.path.setAttribute('stroke',C.rust),s.path.setAttribute('stroke-opacity',.55);
     const step=i+1; setBar('naive',1-step*0.15); setBar('res',1-step*0.03);
-    cap.textContent=`${s.label}: ${s.ch.toLowerCase()} input (${s.chs}). The resilient model down-weights this stream instead of trusting it.`;
+    cap.textContent=`${s.label}: ${s.ch.toLowerCase()} input (${s.chs}). ${s.resp}`;
   }
   const timeline=[[300,()=>{cap.textContent='Five domains feed one multimodal model. Under ideal conditions, every stream helps.';}]];
   const STEP=8000; // each caption stays on screen for 8 s
@@ -449,11 +449,10 @@ function buildPanel(svg){
     L.style.opacity=1;cap.textContent='Comparing the cases turns them into a shared lesson for everyone in the room, and for the public synthesis.';
     aud.forEach((a,i)=>setTimeout(()=>a.setAttribute('fill',C.teal),500+Math.abs(i-10.5)*70));}
   const timeline=[[200,()=>{cap.textContent='Panelists and the moderator meet around a shared whiteboard.';}]];
-  const STEP=8000; // each caption stays on screen for 8 s
-  [0,1,2,3].forEach(i=>timeline.push([STEP+i*STEP,()=>speak(i)]));
-  timeline.push([STEP+4*STEP+300,conclude]);
+  [0,1,2,3].forEach(i=>timeline.push([1300+i*1700,()=>speak(i)]));
+  timeline.push([1300+4*1700+300,conclude]);
   function final(){[0,1,2,3].forEach(i=>cells[i].forEach((c,k)=>c.setAttribute('fill',k%2?tints[i]:(i%2?'#F1D9CB':'#CFE6E7'))));people.forEach(p=>{p.b.style.opacity=.25;p.b.setAttribute('transform','translate(0,0)');});conclude();aud.forEach(a=>a.setAttribute('fill',C.teal));}
-  return {timeline,final,duration:STEP+4*STEP+6800}; // final caption ~10 s incl. HOLD
+  return {timeline,final,duration:1300+4*1700+2400};
 }
 
 controller(document.getElementById('heroFig'),buildHero);
