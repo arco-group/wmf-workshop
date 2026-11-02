@@ -249,7 +249,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
   <h2>Organizers</h2>
   <div class="people">
     <div class="person"><figure class="ph"><img src="img/PS.jpg" alt="Paolo Soda" onerror="this.remove()"><span aria-hidden="true">PS</span></figure><div><h3><a href="https://www.umu.se/en/staff/paolo-soda/">Paolo Soda</a></h3><p class="aff">Università Campus Bio-Medico di Roma; Umeå University</p><p class="role">General chair</p></div></div>
-    <div class="person"><figure class="ph"><img src="img/AF.jpg" alt="Arianna Francesconi" onerror="this.remove()"><span aria-hidden="true">AF</span></figure><div><h3><a href="https://scholar.google.com/citations?user=9k4AlTMAAAAJ">Arianna Francesconi</a></h3><p class="aff">Università Campus Bio-Medico di Roma</p><p class="role">Program co-chair · Primary liaison</p></div></div>
+    <div class="person"><figure class="ph"><img src="img/AF.jpg" alt="Arianna Francesconi" onerror="this.remove()"><span aria-hidden="true">AF</span></figure><div><h3><a href="https://ariannafrancesconi.github.io">Arianna Francesconi</a></h3><p class="aff">Università Campus Bio-Medico di Roma</p><p class="role">Program co-chair · Primary liaison</p></div></div>
     <div class="person"><figure class="ph"><img src="img/RS.jpg" alt="Rosa Sicilia" onerror="this.remove()"><span aria-hidden="true">RS</span></figure><div><h3><a href="https://unicamillus.org/en/lecturers/rosa-sicilia/">Rosa Sicilia</a></h3><p class="aff">UniCamillus, Rome</p><p class="role">Program co-chair · Secondary liaison</p></div></div>
     <div class="person"><figure class="ph"><img src="img/PB.jpg" alt="Pierre Baldi" onerror="this.remove()"><span aria-hidden="true">PB</span></figure><div><h3><a href="https://www.ics.uci.edu/~pfbaldi/">Pierre Baldi</a></h3><p class="aff">University of California, Irvine</p><p class="role">Senior advisor</p></div></div>
     <div class="person"><figure class="ph"><img src="img/VG.jpg" alt="Valerio Guarrasi" onerror="this.remove()"><span aria-hidden="true">VG</span></figure><div><h3><a href="https://guarrasi1995.github.io/">Valerio Guarrasi</a></h3><p class="aff">UniCamillus, Rome</p><p class="role">Publication chair</p></div></div>
@@ -374,8 +374,9 @@ function buildHero(svg){
     cap.textContent=`${s.label}: ${s.ch.toLowerCase()} input (${s.chs}). The resilient model down-weights this stream instead of trusting it.`;
   }
   const timeline=[[300,()=>{cap.textContent='Five domains feed one multimodal model. Under ideal conditions, every stream helps.';}]];
-  S.forEach((s,i)=>timeline.push([1900+i*1600,()=>apply(i)]));
-  timeline.push([1900+5*1600+200,()=>{fade(gWeb,true,900);cap.textContent='In the wild these failures co-occur and interact. Resilience means useful behaviour, or degradation that is controlled and measurable.';}]);
+  const STEP=8000; // each caption stays on screen for 8 s
+  S.forEach((s,i)=>timeline.push([STEP+i*STEP,()=>apply(i)]));
+  timeline.push([STEP+5*STEP+200,()=>{fade(gWeb,true,900);cap.textContent='In the wild these failures co-occur and interact. Resilience means useful behaviour, or degradation that is controlled and measurable.';}]);
 
   function tick(t){
     S.forEach(s=>{
@@ -393,7 +394,7 @@ function buildHero(svg){
     });
   }
   function final(){S.forEach((s,i)=>apply(i));fade(gWeb,true,0);tick(1.3);}
-  return {timeline,tick,final,duration:1900+5*1600+1200};
+  return {timeline,tick,final,duration:STEP+5*STEP+6700}; // final caption ~10 s incl. HOLD
 }
 
 /* ================= PANEL ================= */
@@ -448,10 +449,11 @@ function buildPanel(svg){
     L.style.opacity=1;cap.textContent='Comparing the cases turns them into a shared lesson for everyone in the room, and for the public synthesis.';
     aud.forEach((a,i)=>setTimeout(()=>a.setAttribute('fill',C.teal),500+Math.abs(i-10.5)*70));}
   const timeline=[[200,()=>{cap.textContent='Panelists and the moderator meet around a shared whiteboard.';}]];
-  [0,1,2,3].forEach(i=>timeline.push([1300+i*1700,()=>speak(i)]));
-  timeline.push([1300+4*1700+300,conclude]);
+  const STEP=8000; // each caption stays on screen for 8 s
+  [0,1,2,3].forEach(i=>timeline.push([STEP+i*STEP,()=>speak(i)]));
+  timeline.push([STEP+4*STEP+300,conclude]);
   function final(){[0,1,2,3].forEach(i=>cells[i].forEach((c,k)=>c.setAttribute('fill',k%2?tints[i]:(i%2?'#F1D9CB':'#CFE6E7'))));people.forEach(p=>{p.b.style.opacity=.25;p.b.setAttribute('transform','translate(0,0)');});conclude();aud.forEach(a=>a.setAttribute('fill',C.teal));}
-  return {timeline,final,duration:1300+4*1700+2400};
+  return {timeline,final,duration:STEP+4*STEP+6800}; // final caption ~10 s incl. HOLD
 }
 
 controller(document.getElementById('heroFig'),buildHero);
