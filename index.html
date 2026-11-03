@@ -135,9 +135,10 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
 
   <svg id="heroFig" class="fig" role="img" aria-labelledby="heroTitle heroDesc">
     <title id="heroTitle">Multimodal failures in the wild</title>
-    <desc id="heroDesc">Five domains, vision, robotics, Earth observation, ecology and healthcare, send data streams into one model. One by one the streams become noisy, misaligned, missing, unpaired or shifted. Naive fusion loses most of its prediction quality, while a resilient model degrades in a controlled way. The five failures are linked to show that in the real world they occur together.</desc>
+    <desc id="heroDesc">Five domains, vision, robotics, Earth observation, ecology and healthcare, send data streams into one model. One by one the streams become noisy, misaligned, missing, unpaired or shifted. Hypothetical response curves illustrate different degrees of degradation, not measured performance. Failures can co-occur; whether fusion helps must be tested against matched unimodal references.</desc>
   </svg>
   <p class="figcap" id="heroCap" aria-live="polite"></p>
+  <p class="note">Illustrative animation, not experimental results. Bars show hypothetical responses to input failures; their lengths do not represent measured performance. Fusion must be evaluated against matched unimodal references under specified conditions.</p>
 
   <p class="q">Under which observable conditions does an additional modality help, when does it hurt, and what evidence justifies a claim of resilience?</p>
 </div></header>
@@ -150,18 +151,20 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
     <p>Bringing together computer vision, robotics, Earth observation, ecology and healthcare, the workshop examines modality contribution, learning with imperfect inputs, and evaluation against matched unimodal baselines. We welcome theory, methods, benchmarks and rigorous empirical studies, including negative findings. <a href="#topics">Explore topics and examples to see whether your paper fits</a>.</p>
   </div>
 
+  <p class="col">We use resilience to mean limiting task-performance degradation as modality availability, quality or correspondence changes. WMF also studies its limits, including when fusion underperforms a relevant unimodal reference.</p>
+
   <div class="pillars" aria-label="Three scientific pillars">
     <div><h3>Contribution</h3><p>When does an added modality bring complementary evidence, and when do dominance, conflict or negative transfer make predictions worse?</p></div>
-    <div><h3>Imperfect conditions</h3><p>Missing, weakly paired, asynchronous or corrupted inputs; class imbalance; cross-site and domain shift.</p></div>
+    <div><h3>Imperfect conditions</h3><p>Missing, weakly paired, asynchronous or corrupted inputs; class imbalance when it affects modality contribution; cross-site and domain shift.</p></div>
     <div><h3>Conditional evaluation</h3><p>Matched unimodal baselines, modality-subset stress tests, calibration, selective prediction and fairness under changing modality access.</p></div>
   </div>
 
   <div class="panel-block">
     <h3 class="big">The most instructive failure I have seen</h3>
-    <p class="col">Our flagship panel brings documented failure cases from different domains to one table. Each panelist presents a case; the moderator records conditions, mechanisms, evidence and fixes in a shared cross-case matrix, and the discussion distils lessons that transfer beyond a single field.</p>
+    <p class="col">Our flagship panel compares documented failure cases across domains. Each panelist describes the task, modalities, failure conditions, diagnostic evidence, response tested and limitations, using a matched unimodal baseline where applicable. The moderator groups cases around shared failure mechanisms where supported by the evidence. The discussion examines when lessons may transfer and which conclusions remain specific to the original conditions. A public cross-case matrix and synthesis, reviewed by the relevant panelists, will distinguish supported findings from hypotheses and open questions.</p>
     <svg id="panelFig" class="fig" role="img" aria-labelledby="panelTitle panelDesc">
       <title id="panelTitle">How the panel works</title>
-      <desc id="panelDesc">Four panelists and a moderator stand around a whiteboard. Each panelist in turn contributes a case, evidence, a unimodal baseline or a mitigation, and each contribution fills a row of a cross-case matrix on the board. When the matrix is complete, a shared lesson emerges from the board and reaches the audience.</desc>
+      <desc id="panelDesc">Four panelists and a moderator stand around a whiteboard. Each panelist presents a complete case using the same template: conditions, evidence, a baseline where applicable, response and limitations. Each row represents one case. The synthesis distinguishes supported findings, limits of transfer and open questions.</desc>
     </svg>
     <p class="figcap" id="panelCap" aria-live="polite"></p>
     <ol class="steps" aria-label="Panel structure, 55 minutes">
@@ -174,14 +177,14 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
   <h2>Topics of interest</h2>
   <p class="col">Does your work examine how multimodal systems behave when inputs are incomplete, unreliable or in conflict? We welcome theory, methods, benchmarks and empirical studies on the following topics, including negative findings in either paper track.</p>
   <ul class="topic-list">
-    <li><h3>Missing and imperfect modalities</h3><p>Missing, weakly paired, unpaired, asynchronous, noisy or corrupted inputs; learning with limited supervision or class imbalance.</p></li>
+    <li><h3>Missing and imperfect modalities</h3><p>Missing, weakly paired, unpaired, asynchronous, noisy or corrupted inputs; limited supervision or class imbalance when they affect modality contribution.</p></li>
     <li><h3>When fusion helps or hurts</h3><p>Complementarity, redundancy, conflict, modality dominance and negative transfer; comparisons with matched unimodal references.</p></li>
     <li><h3>Adaptive fusion and reliable responses</h3><p>Fusion that adapts to input availability or quality; alignment, reconstruction, reweighting, fallback and abstention.</p></li>
     <li><h3>Evaluation under changing conditions</h3><p>Modality-subset and degradation stress tests; cross-site and domain generalization; calibration, uncertainty, selective prediction and fairness under changing modality access.</p></li>
     <li><h3>Foundation and embodied models</h3><p>Multimodal foundation models, vision-language models and vision-language-action policies whose predictions or actions change when visual evidence or other inputs degrade.</p></li>
     <li><h3>Failures in real applications</h3><p>Computer vision, robotics, Earth observation, ecology and healthcare: realistic failure conditions, diagnostic evidence and limits of proposed responses.</p></li>
   </ul>
-  <div class="fit col"><h3>Is my paper a good fit?</h3><p>For example: a sensor-fusion method tested with a missing sensor; a vision-language model that relies on language when images degrade; or a clinical model evaluated across hospitals with different modality access. Make clear which modality condition is studied, what evidence supports the claim and where the conclusions apply. A new multimodal model can fit when it addresses these questions.</p><p>Where applicable, report unimodal references on the same task, splits and metrics, disclosing differences in pretraining, capacity and compute or tuning budgets; a modality-subset or degradation test specifying failure type, severity and origin; and the observed or assumed missingness pattern. Explain inapplicable items or unavailable references. These guide assessment of the claims made.</p><p><a href="#papers">See paper tracks and tentative submission dates</a>.</p></div>
+  <div class="fit col"><h3>Is my paper a good fit?</h3><p>For example: a sensor-fusion method tested with a missing sensor; a vision-language model that relies on language when images degrade; or a clinical model evaluated across hospitals with different modality access. Make clear which modality condition is studied, what evidence supports the claim and where the conclusions apply. A new multimodal model can fit when it addresses these questions.</p><p>Where applicable, report unimodal references on the same task, splits and metrics, disclosing differences in pretraining, capacity and compute or tuning budgets; a modality-subset or degradation test specifying failure type, severity and origin; and the observed or assumed missingness pattern. Comparisons should separate input failures at training and test time and report variability across runs where feasible. Explain inapplicable items or unavailable references. These guide assessment of the claims made.</p><p><a href="#papers">See paper tracks and tentative submission dates</a>.</p></div>
 </div></section>
 
 <section id="speakers"><div class="wrap">
@@ -219,7 +222,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
 <section id="program"><div class="wrap">
   <h2>Tentative program</h2>
   <div class="col" style="max-width:820px">
-  <p class="note">Half day, in person, with talks and panel recorded. Times are counted from the start of the slot assigned by CVPR.</p>
+  <p class="note">Half day, in person. Talks and the panel will be recorded through CVPR-provided Zoom, subject to speaker consent and CVPR arrangements. Times are counted from the start of the slot assigned by CVPR.</p>
   <table>
     <thead><tr><th scope="col">Time</th><th scope="col">Session</th><th scope="col" style="text-align:right">Min</th></tr></thead>
     <tbody>
@@ -334,11 +337,11 @@ function buildHero(svg){
   const W=V?400:1040,H=V?720:400; svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
   const cap=document.getElementById('heroCap');
   const S=[
-    {label:'Vision',sub:'cameras, video',ic:'camera',ch:'Noisy',chs:'fog, glare, blur',resp:'The resilient model trusts the camera less and leans on the other sensors.'},
-    {label:'Robotics',sub:'LiDAR, radar, touch',ic:'robot',ch:'Misaligned',chs:'sensors out of sync',resp:'The resilient model re-aligns the streams in time before fusing them.'},
-    {label:'Earth observation',sub:'optical, SAR',ic:'sat',ch:'Missing',chs:'cloud cover',resp:'The resilient model falls back on radar instead of guessing what the clouds hide.'},
-    {label:'Ecology',sub:'camera traps, audio',ic:'leaf',ch:'Unpaired',chs:'no matched samples',resp:'The resilient model links the modalities only where shared evidence supports it.'},
-    {label:'Healthcare',sub:'imaging, records',ic:'pulse',ch:'Shifted',chs:'a new hospital',resp:'The resilient model checks its calibration and defers to clinicians when uncertain.'}
+    {label:'Vision',sub:'cameras, video',ic:'camera',ch:'Noisy',chs:'fog, glare, blur',resp:'Possible response to test: reduce reliance on the camera and evaluate the remaining sensors against unimodal references.'},
+    {label:'Robotics',sub:'LiDAR, radar, touch',ic:'robot',ch:'Misaligned',chs:'sensors out of sync',resp:'Possible response to test: re-align streams before fusion and measure residual errors.'},
+    {label:'Earth observation',sub:'optical, SAR',ic:'sat',ch:'Missing',chs:'cloud cover',resp:'Possible response to test: fall back on radar and evaluate what information is lost.'},
+    {label:'Ecology',sub:'camera traps, audio',ic:'leaf',ch:'Unpaired',chs:'no matched samples',resp:'Possible response to test: learn cross-modal correspondences and check where alignment assumptions hold.'},
+    {label:'Healthcare',sub:'imaging, records',ic:'pulse',ch:'Shifted',chs:'a new hospital',resp:'Possible response to test: assess calibration and abstention, including coverage lost and errors across patient groups.'}
   ];
   const hub=V?{x:300,y:175,r:46}:{x:600,y:190,r:62};
   const root=el('g',{},svg);
@@ -367,21 +370,21 @@ function buildHero(svg){
   el('circle',{cx:hub.x,cy:hub.y,r:hub.r,fill:'#fff',stroke:C.line,'stroke-width':1.5},root);
   const arcs=S.map((s,i)=>{const a0=-Math.PI*0.95+i*(Math.PI*1.9/5)+0.06,a1=a0+Math.PI*1.9/5-0.12,R=hub.r-8;
     return el('path',{d:`M${hub.x+R*Math.cos(a0)} ${hub.y+R*Math.sin(a0)} A${R} ${R} 0 0 1 ${hub.x+R*Math.cos(a1)} ${hub.y+R*Math.sin(a1)}`,fill:'none',stroke:C.teal,'stroke-width':V?6:8,'stroke-linecap':'round',style:'transition:stroke-width .8s, stroke .8s'},root);});
-  txt(root,hub.x,hub.y-2,'Resilient',{'text-anchor':'middle','font-size':V?13:16,'font-weight':700,fill:C.navy});
+  txt(root,hub.x,hub.y-2,'Adaptive',{'text-anchor':'middle','font-size':V?13:16,'font-weight':700,fill:C.navy});
   txt(root,hub.x,hub.y+(V?14:18),'model',{'text-anchor':'middle','font-size':V?13:16,fill:C.navy});
   // output panel
   const P=V?{x:16,y:560,w:368}:{x:760,y:120,w:262};
   if(!V) el('path',{d:`M${hub.x+hub.r+4} ${hub.y} L${P.x-8} ${hub.y}`,stroke:C.navy,'stroke-width':2,'stroke-opacity':.35,'marker-end':''},root);
   else el('path',{d:`M${hub.x} ${hub.y+hub.r+4} L${hub.x} ${hub.y+hub.r+24}`,stroke:C.navy,'stroke-width':2,'stroke-opacity':.35},root);
-  txt(root,P.x,P.y,'Prediction quality',{'font-size':V?16:18,'font-weight':700,fill:C.ink});
+  txt(root,P.x,P.y,'Illustrative performance',{'font-size':V?16:18,'font-weight':700,fill:C.ink});
   const bw=P.w, bars={};
-  [['naive','Naive fusion',C.rust,0],['res','Resilient model',C.teal,1]].forEach(([k,l,col,j])=>{
+  [['naive','Fusion response A',C.rust,0],['res','Fusion response B',C.teal,1]].forEach(([k,l,col,j])=>{
     const y=P.y+28+j*58; txt(root,P.x,y,l,{'font-size':V?14:15,fill:C.muted});
     el('rect',{x:P.x,y:y+8,width:bw,height:16,rx:3,fill:C.soft},root);
     bars[k]={r:el('rect',{x:P.x,y:y+8,width:bw,height:16,rx:3,fill:col,style:'transition:width 1s ease'},root),v:1,
-      n:txt(root,P.x+bw,y,'100%',{'text-anchor':'end','font-size':V?14:15,'font-weight':700,fill:col})};
+      n:txt(root,P.x+bw,y,'',{'text-anchor':'end','font-size':V?14:15,'font-weight':700,fill:col})};
   });
-  function setBar(k,v){bars[k].v=v;bars[k].r.setAttribute('width',Math.max(4,bw*v));bars[k].n.textContent=Math.round(v*100)+'%';}
+  function setBar(k,v){bars[k].v=v;bars[k].r.setAttribute('width',Math.max(4,bw*v));bars[k].n.textContent='';}
   // web linking the failures
   const pts=S.map(s=>s.tc);
   for(let a=0;a<5;a++)for(let b=a+1;b<5;b++){if(V)el('line',{x1:pts[a].x,y1:pts[a].y,x2:pts[b].x,y2:pts[b].y,stroke:C.rust,'stroke-width':1,'stroke-dasharray':'3 5','stroke-opacity':.55},gWeb);else{const k=14+(b-a)*16;el('path',{d:`M${pts[a].x} ${pts[a].y} C${pts[a].x+k} ${pts[a].y} ${pts[b].x+k} ${pts[b].y} ${pts[b].x} ${pts[b].y}`,fill:'none',stroke:C.rust,'stroke-width':1.2,'stroke-dasharray':'3 5','stroke-opacity':.6},gWeb);}}
@@ -394,10 +397,10 @@ function buildHero(svg){
     const step=i+1; setBar('naive',1-step*0.15); setBar('res',1-step*0.03);
     cap.textContent=`${s.label}: ${s.ch.toLowerCase()} input (${s.chs}). ${s.resp}`;
   }
-  const timeline=[[300,()=>{cap.textContent='Five domains feed one multimodal model. Under ideal conditions, every stream helps.';}]];
+  const timeline=[[300,()=>{cap.textContent='Examples from five domains illustrate changing inputs. An additional modality may help, add no benefit or hurt; this requires a matched comparison.';}]];
   const STEP=8000; // each caption stays on screen for 8 s
   S.forEach((s,i)=>timeline.push([STEP+i*STEP,()=>apply(i)]));
-  timeline.push([STEP+5*STEP+200,()=>{fade(gWeb,true,900);cap.textContent='In the wild these failures co-occur and interact. Resilience means useful behaviour, or degradation that is controlled and measurable.';}]);
+  timeline.push([STEP+5*STEP+200,()=>{fade(gWeb,true,900);cap.textContent='Failures can co-occur and interact. Resilience means limiting task-performance degradation; responses must be evaluated under specified conditions.';}]);
 
   function tick(t){
     S.forEach(s=>{
@@ -433,8 +436,8 @@ function buildPanel(svg){
   for(let r=0;r<rows;r++){cells[r]=[];for(let c=0;c<cols;c++){cells[r][c]=el('rect',{x:cx0+c*cw+2,y:cy0+r*chh+2,width:cw-4,height:chh-4,rx:2,fill:C.soft,style:'transition:fill .4s'},g);}}
   // people
   const people=[
-    {x:80,lab:'Case',col:C.navy},{x:240,lab:'Evidence',col:C.navy},
-    {x:810,lab:'Baseline',col:C.navy},{x:965,lab:'Mitigation',col:C.navy}
+    {x:80,lab:'Case 1',col:C.navy},{x:240,lab:'Case 2',col:C.navy},
+    {x:810,lab:'Case 3',col:C.navy},{x:965,lab:'Case 4',col:C.navy}
   ];
   const mod={x:708,col:C.teal};
   function person(x,col,base){const p=el('g',{},g);el('circle',{cx:x,cy:base-92,r:20,fill:col},p);el('path',{d:`M${x-34} ${base} C${x-34} ${base-50} ${x-22} ${base-64} ${x} ${base-64} C${x+22} ${base-64} ${x+34} ${base-50} ${x+34} ${base}Z`,fill:col},p);return p;}
@@ -459,15 +462,15 @@ function buildPanel(svg){
   // bulb icon
   const bi=el('g',{transform:'translate(401,214)',fill:'none',stroke:'#fff','stroke-width':2,'stroke-linecap':'round'},L);
   el('path',{d:'M14 2a10 10 0 0 0-6 18v5h12v-5a10 10 0 0 0-6-18zM9 30h10'},bi);
-  txt(L,439,230,'Shared lesson',{'font-size':22,'font-weight':700,fill:'#fff'});
-  txt(L,439,254,'what failed, why, what transfers',{'font-size':14,'font-style':'italic',fill:'#fff'});
+  txt(L,439,230,'Case synthesis',{'font-size':22,'font-weight':700,fill:'#fff'});
+  txt(L,439,254,'evidence, limits, open questions',{'font-size':14,'font-style':'italic',fill:'#fff'});
   const tints=['#CFE6E7','#F1D9CB','#CFE6E7','#DCE6EE'];
   function speak(i){const p=people[i];people.forEach((q,j)=>{if(j!==i){q.b.style.opacity=.35;}});
     p.b.style.opacity=1;p.b.setAttribute('transform','translate(0,0)');p.link.style.opacity=1;
     cells[i].forEach((c,k)=>setTimeout(()=>c.setAttribute('fill',k%2?tints[i]:(i%2?'#F1D9CB':'#CFE6E7')),300+k*180));
-    cap.textContent=['A panelist presents a documented failure case from their domain.','Another brings the diagnostic evidence behind it.','A third compares it with a matched unimodal baseline.','The last discusses mitigation, and where it stops working.'][i];}
+    cap.textContent=`Case ${i+1}: task, input conditions, evidence, baseline where applicable, response tested and limitations.`;}
   function conclude(){people.forEach(p=>{p.b.style.opacity=.25;p.link.style.opacity=0;});board.setAttribute('stroke',C.rust);board.setAttribute('stroke-width',3.5);
-    L.style.opacity=1;cap.textContent='Comparing the cases turns them into a shared lesson for everyone in the room, and for the public synthesis.';
+    L.style.opacity=1;cap.textContent='The synthesis distinguishes supported findings, conditions for transfer and open questions; each public matrix entry is reviewed by its panelist.';
     aud.forEach((a,i)=>setTimeout(()=>a.setAttribute('fill',C.teal),500+Math.abs(i-10.5)*70));}
   const timeline=[[200,()=>{cap.textContent='Panelists and the moderator meet around a shared whiteboard.';}]];
   [0,1,2,3].forEach(i=>timeline.push([1300+i*1700,()=>speak(i)]));
