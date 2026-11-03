@@ -46,7 +46,7 @@ nav a.l:hover{color:var(--teal)}
 
 .q{border-left:4px solid var(--rust);padding:4px 0 4px 18px;font-size:1.3rem;line-height:1.45;max-width:60ch;margin-top:30px}
 
-section{padding:56px 0;border-top:1px solid var(--line)}
+section{scroll-margin-top:72px;padding:56px 0;border-top:1px solid var(--line)}
 h2{font-weight:700;font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.1;color:var(--navy);margin:0 0 22px}
 h3{font-weight:700;font-size:1.25rem;line-height:1.25;margin:0 0 4px;color:var(--ink)}
 p{margin:0 0 16px}
@@ -55,6 +55,12 @@ p{margin:0 0 16px}
 .pillars div{padding:18px 22px 6px 0}
 .pillars div+div{padding-left:22px;border-left:1px solid var(--line)}
 .pillars h3{color:var(--teal)}
+
+.topic-list{display:grid;grid-template-columns:1fr 1fr;gap:24px 36px;padding-left:22px}
+.topic-list li{padding-left:4px}
+.topic-list h3{color:var(--teal);margin-bottom:6px}
+.fit{border-left:4px solid var(--teal);padding:12px 20px;background:var(--card);margin-top:26px}
+@media(max-width:760px){.topic-list{grid-template-columns:1fr}}
 
 .panel-block{margin-top:44px}
 .panel-block h3.big{font-size:1.5rem;color:var(--rust);margin-bottom:10px}
@@ -116,6 +122,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
 <nav aria-label="Sections"><div class="wrap">
   <a class="mark" href="#top">WMF</a>
   <a class="l" href="#about">About</a>
+  <a class="l" href="#topics">Topics</a>
   <a class="l" href="#speakers">Speakers</a>
   <a class="l" href="#program">Program</a>
   <a class="l" href="#papers">Papers</a>
@@ -140,7 +147,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
   <div class="col">
     <h2>About the workshop</h2>
     <p>Multimodal learning can improve predictive performance, yet missing or unpaired inputs, noise, misalignment and distribution shifts can undermine its benefits. When Modalities Fail asks when fusion helps, when it hurts, and how systems should respond when their assumptions are violated.</p>
-    <p>Bringing together computer vision, robotics, Earth observation, ecology and healthcare, the workshop examines modality contribution, learning with imperfect inputs, and evaluation against matched unimodal baselines. We welcome theory, methods, benchmarks and rigorous empirical studies, including negative findings.</p>
+    <p>Bringing together computer vision, robotics, Earth observation, ecology and healthcare, the workshop examines modality contribution, learning with imperfect inputs, and evaluation against matched unimodal baselines. We welcome theory, methods, benchmarks and rigorous empirical studies, including negative findings. <a href="#topics">Explore topics and examples to see whether your paper fits</a>.</p>
   </div>
 
   <div class="pillars" aria-label="Three scientific pillars">
@@ -161,6 +168,20 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
       <li><b>Frame</b> 5 min</li><li><b>Cases</b> 20 min</li><li><b>Compare</b> 15 min</li><li><b>Audience</b> 10 min</li><li><b>Synthesis</b> 5 min</li>
     </ol>
   </div>
+</div></section>
+
+<section id="topics"><div class="wrap">
+  <h2>Topics of interest</h2>
+  <p class="col">Does your work examine how multimodal systems behave when inputs are incomplete, unreliable or in conflict? We welcome theory, methods, benchmarks and empirical studies on the following topics, including negative findings in either paper track.</p>
+  <ul class="topic-list">
+    <li><h3>Missing and imperfect modalities</h3><p>Missing, weakly paired, unpaired, asynchronous, noisy or corrupted inputs; learning with limited supervision or class imbalance.</p></li>
+    <li><h3>When fusion helps or hurts</h3><p>Complementarity, redundancy, conflict, modality dominance and negative transfer; comparisons with matched unimodal references.</p></li>
+    <li><h3>Adaptive fusion and reliable responses</h3><p>Fusion that adapts to input availability or quality; alignment, reconstruction, reweighting, fallback and abstention.</p></li>
+    <li><h3>Evaluation under changing conditions</h3><p>Modality-subset and degradation stress tests; cross-site and domain generalization; calibration, uncertainty, selective prediction and fairness under changing modality access.</p></li>
+    <li><h3>Foundation and embodied models</h3><p>Multimodal foundation models, vision-language models and vision-language-action policies whose predictions or actions change when visual evidence or other inputs degrade.</p></li>
+    <li><h3>Failures in real applications</h3><p>Computer vision, robotics, Earth observation, ecology and healthcare: realistic failure conditions, diagnostic evidence and limits of proposed responses.</p></li>
+  </ul>
+  <div class="fit col"><h3>Is my paper a good fit?</h3><p>For example: a sensor-fusion method tested with a missing sensor; a vision-language model that relies on language when images degrade; or a clinical model evaluated across hospitals with different modality access. Make clear which modality condition is studied, what evidence supports the claim and where the conclusions apply. A new multimodal model can fit when it addresses these questions.</p><p>Where applicable, report unimodal references on the same task, splits and metrics, disclosing differences in pretraining, capacity and compute or tuning budgets; a modality-subset or degradation test specifying failure type, severity and origin; and the observed or assumed missingness pattern. Explain inapplicable items or unavailable references. These guide assessment of the claims made.</p><p><a href="#papers">See paper tracks and tentative submission dates</a>.</p></div>
 </div></section>
 
 <section id="speakers"><div class="wrap">
@@ -213,7 +234,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
       <tr><td class="t">04:20–04:30</td><td>Synthesis and closing research questions</td><td class="m">10</td></tr>
     </tbody>
   </table>
-  <p class="note" style="margin-top:14px">Questions from the room and from remote viewers will be collected through a short form linked by QR code, with no sign-in required.</p>
+  <p class="note" style="margin-top:14px">Audience questions will be collected through a live Q&amp;A interface linked by QR code, alongside room microphones and CVPR-provided Zoom chat.</p>
   </div>
 </div></section>
 
@@ -242,7 +263,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;color:var(--muted);f
       </ul>
     </div>
   </div>
-  <p class="note" style="margin-top:18px">All dates are 2027, anywhere on Earth, and tentative except the CVPR camera-ready deadline. Authors who opt in may describe a documented failure case and be considered for the two author seats on the panel.</p>
+  <p class="note" style="margin-top:18px">All dates are 2027, anywhere on Earth. Workshop-set dates are tentative; the CVPR archival author-metadata deadline (March 29) and camera-ready deadline (April 23) are fixed. Authors who opt in may describe a documented failure case and be considered for the two author seats on the panel.</p>
 </div></section>
 
 <section id="organizers"><div class="wrap">
